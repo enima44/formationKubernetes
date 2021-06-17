@@ -1,0 +1,20 @@
+#--- Version de L'api Kubernetes (app/v1, v1, ...)
+apiVersion: v1
+#--- le type d'entité qu'on souhaite créer => des pods
+kind: Pod
+#--- des informations sur l'objet qu'on crée
+metadata:
+  name: myapp
+  labels:
+    name: myapp
+#-- spécifications des conteneurs de notre pod
+spec:
+  containers:
+  - name: c1-nginx
+    image: nginx
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80

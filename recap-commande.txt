@@ -1,0 +1,20 @@
+//Modification des configurations de minikube
+minikube config set memory 1024
+
+//Démarrage de minikube
+minikube start --vm-driver=none
+
+//Arreter
+minikube stop
+
+//Statut
+minikube status
+
+//Se connecter en ssh
+minikube ssh
+
+//Commande pour récupérer les informations du cluster
+kubectl cluster-info
+
+//Récupérer la listes des nodes de notre cluster
+kubectl get nodes
