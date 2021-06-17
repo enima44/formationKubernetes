@@ -18,3 +18,7 @@ kubectl cluster-info
 
 //Récupérer la listes des nodes de notre cluster
 kubectl get nodes
+
+//Création d'un pod
+
+kubectl create -f <nom_fichier>.yml
