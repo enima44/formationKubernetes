@@ -25,3 +25,6 @@ kubectl create -f <nom_fichier>.yml
 
 //pour Agir sur le scale d'un replicas, on utilise la Commande
 kubectl scale --replicas=2 replicaset nodejs
+
+//pour Afficher l'historique des deployments
+kubectl rollout history deployment/example-deployment 
