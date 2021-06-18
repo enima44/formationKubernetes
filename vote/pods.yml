@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vote-pod
+  labels:
+    name: vote-pod
+spec:
+  containers:
+  - name: container-pod
+    image: vote-image
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
+  - name: redis
+    image: redis
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    volumeMounts:
+      - mountPath: /share-redis
+        name: share-cross-container
+  - name: alpine
+    image: alpine
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    volumeMounts:
+      - mountPath: /share-alpine
+        name: share-cross-container
+    command: ["/bin/sh", "-c"]
+    args:
+      - date >> date.txt
+  
+  volumes:
+    - name: share-cross-container
+      hostPath:
+        path: /share-node
+        type: DirectoryOrCreate
+

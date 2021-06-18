@@ -2,7 +2,7 @@
 minikube config set memory 1024
 
 //Démarrage de minikube
-minikube start --vm-driver=none
+minikube start --vm-driver=docker
 
 //Arreter
 minikube stop
