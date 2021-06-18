@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nodejs
+  labels:
+    app: nodejs
+spec:
+  replicas: 3
+  selector:
+  #-- à l'aide du label spécifié dans le templatte, on selectionne le pod à repliquer
+    matchLabels:
+      app: pod-nodejs
+  #-- on crée un nouveau pod directement dans le replica
+  template:
+    metadata:
+      name: pod-nodejs
+      labels:
+        app: pod-nodejs
+    spec:
+      containers:
+        - name: node-app
+          image: node
+          ports:
+            - containerPort: 80
+        - name: redis
+          image: redis
+        
+          
