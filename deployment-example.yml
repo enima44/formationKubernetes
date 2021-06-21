@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: node-app
-          image: node
+          image: vote-image
+          imagePullPolicy: 'IfNotPresent'
           ports:
             - containerPort: 80
           resources:
